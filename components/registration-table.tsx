@@ -14,7 +14,7 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
+  // DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -40,7 +40,7 @@ export default function RegistrationTable() {
  }
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [fetching, setFetching] = useState(false);
-  const[editing, setEditing] = useState();
+  // const[editing, setEditing] = useState();
   useEffect(() => {
     //set to localStorage
     fetchRegistrations();
@@ -131,7 +131,7 @@ export default function RegistrationTable() {
                         <DialogTitle>Edit User</DialogTitle>
                         <DialogDescription>
                           Make changes to your profile here. Click update when
-                          you're done.
+                          you are done.
                         </DialogDescription>
                       </DialogHeader>
                       <div>
