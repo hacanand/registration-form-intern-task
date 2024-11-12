@@ -2,13 +2,13 @@
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
-interface Registration {
+  interface Registration {
     name: string;
     email: string;
-    dateOfBirth: string | number | Date
-    phone: any
-    address:any
-}
+    dateOfBirth: string | number | Date;
+    phone: string | null | undefined;
+    address: string | null | undefined;
+  }
 
 export async function createRegistration(data: Registration) {
   try {

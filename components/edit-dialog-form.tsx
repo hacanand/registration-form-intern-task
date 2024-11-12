@@ -55,7 +55,7 @@ export default function EditDialogForm({data}: {data: Registration}) {
     defaultValues: {
       name:data.name,
       email: data.email,
-      dateOfBirth: new Date(data.dateOfBirth).toLocaleDateString(),
+      dateOfBirth: new Date(data.dateOfBirth).toString(),
       phone: data.phone||"",
       address: data.address||"",
     },

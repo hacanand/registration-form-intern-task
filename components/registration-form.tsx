@@ -18,13 +18,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { createRegistration } from "../lib/registrationOperations";
 
-// interface Registration {
-//   name: string;
-//   email: string;
-//   dateOfBirth: string | number | Date;
-//   phone: any;
-//   address: any;
-// }
+  interface Registration {
+   id: number ;
+   name: string;
+   email: string;
+   dateOfBirth: string | number | Date;
+   phone?: string | null | undefined;
+   address?: string | null | undefined;
+ }
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -42,8 +43,8 @@ const formSchema = z.object({
       message: "Please enter a valid date.",
     }
   ),
-  phone: z.string()?.optional(),
-  address: z.string()?.optional(),
+  phone: z.string().optional(),
+  address: z.string().optional(),
 });
 
 export default function RegistrationForm() {
@@ -60,7 +61,7 @@ export default function RegistrationForm() {
     },
   });
 
-  async function onSubmit(values:any) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {    
       await createRegistration(values);

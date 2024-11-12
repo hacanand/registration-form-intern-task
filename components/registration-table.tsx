@@ -103,9 +103,7 @@ export default function RegistrationTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {fetching ? (
-            <p className="p-4 text-xl ">Loading...</p>
-          ) : (
+          {fetching ? "Loading..." : (
             registrations.map((registration) => (
               <TableRow key={registration.id}>
                 <TableCell>{registration.id}</TableCell>
