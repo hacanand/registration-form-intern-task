@@ -40,6 +40,7 @@ export default function RegistrationTable() {
  }
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [fetching, setFetching] = useState(false);
+  const[editing, setEditing] = useState();
   useEffect(() => {
     //set to localStorage
     fetchRegistrations();
@@ -73,17 +74,18 @@ export default function RegistrationTable() {
       console.error("Error deleting registration:", error);
     }
   };
-    const handleEdit = async (id: string, data: Registration) => {
-      try {
-          // await updateRegistration(id, data);
-        // fetchRegistrations();
+    // const handleEdit = async (id: string, data: Registration) => {
+    //   try {
+      
+    //       // await updateRegistration(id, data);
+    //     // fetchRegistrations();
 
-        // console.log("Edit registration with ID:", id);
+    //     // console.log("Edit registration with ID:", id);
 
-      } catch (error) {
-          console.error("Error updating registration:", error);
-      }
-    };
+    //   } catch (error) {
+    //       console.error("Error getting User Details:", error);
+    //   }
+    // };
     
   return (
     <div className="container mx-auto p-4">
@@ -102,7 +104,7 @@ export default function RegistrationTable() {
         </TableHeader>
         <TableBody>
           {fetching ? (
-            <div className="p-4 text-xl ">Loading...</div>
+            <p className="p-4 text-xl ">Loading...</p>
           ) : (
             registrations.map((registration) => (
               <TableRow key={registration.id}>
@@ -120,9 +122,6 @@ export default function RegistrationTable() {
                       <Button
                         variant="outline"
                         className="mr-2"
-                        onClick={() =>
-                          handleEdit(registration.id.toString(), registration)
-                        }
                       >
                         Edit
                       </Button>
@@ -136,47 +135,10 @@ export default function RegistrationTable() {
                         </DialogDescription>
                       </DialogHeader>
                       <div>
-                        <EditDialogForm />
+                        <EditDialogForm data={registration} />
                       </div>
-                      {/* <div className="grid gap-4 py-4">
-                        <div className="grid grid-cols-4 items-center gap-4">
-                          <Label htmlFor="name" className="text-right">
-                            Name
-                          </Label>
-                          <Input
-                            id="name"
-                            defaultValue="Pedro Duarte"
-                            className="col-span-3"
-                          />
-                        </div>
-                        <div className="grid grid-cols-4 items-center gap-4">
-                          <Label htmlFor="username" className="text-right">
-                            Username
-                          </Label>
-                          <Input
-                            id="username"
-                            defaultValue="@peduarte"
-                            className="col-span-3"
-                          />
-                        </div>
-                      </div> */}
-                      <DialogFooter>
-                        <Button type="submit">Update</Button>
-                      </DialogFooter>
                     </DialogContent>
                   </Dialog>
-
-                  {/* 
-                  <Button
-                    variant="outline"
-                    className="mr-2"
-                    onClick={() =>
-                      handleEdit(registration.id.toString(), registration)
-                    }
-                  >
-                    Edit
-                  </Button> */}
-
                   <Button
                     variant="destructive"
                     onClick={() => handleDelete(registration.id.toString())}

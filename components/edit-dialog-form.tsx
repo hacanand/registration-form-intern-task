@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { createRegistration } from "../lib/registrationOperations";
+import { DialogFooter } from "./ui/dialog";
 
 interface Registration {
   name: string;
@@ -46,17 +47,17 @@ const formSchema = z.object({
   address: z.string(),
 });
 
-export default function EditDialogForm() {
+export default function EditDialogForm({data}: {data: Registration}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      dateOfBirth: "",
-      phone: "",
-      address: "",
+      name:data.name,
+      email: data.email,
+      dateOfBirth: new Date(data.dateOfBirth).toLocaleDateString(),
+      phone: data.phone,
+      address: data.address,
     },
   });
 
@@ -151,9 +152,11 @@ export default function EditDialogForm() {
             </FormItem>
           )}
         />
-        {/* <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Register"}
-        </Button> */}
+        <DialogFooter>
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Updating..." : "Update"}
+          </Button>
+        </DialogFooter>
       </form>
     </Form>
   );
