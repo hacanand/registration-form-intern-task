@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 interface Registration {
-    id: string;
+  
     name: string;
     email: string;
     dateOfBirth: string | number | Date
