@@ -20,13 +20,13 @@ import { createRegistration } from "../lib/registrationOperations";
 import { DialogFooter } from "./ui/dialog";
 
 interface Registration {
+  id: number;
   name: string;
   email: string;
   dateOfBirth: string | number | Date;
-  phone: any;
-  address: any;
+  phone: string | null | undefined;
+  address: string | null | undefined;
 }
-
 const formSchema = z.object({
   name: z.string().min(2, {
     message: "Name must be at least 2 characters.",
@@ -56,8 +56,8 @@ export default function EditDialogForm({data}: {data: Registration}) {
       name:data.name,
       email: data.email,
       dateOfBirth: new Date(data.dateOfBirth).toLocaleDateString(),
-      phone: data.phone,
-      address: data.address,
+      phone: data.phone||"",
+      address: data.address||"",
     },
   });
 

@@ -24,10 +24,10 @@ import { Button } from "@/components/ui/button";
 import {
   getAllRegistrations,
     deleteRegistration,
-  updateRegistration,
+  
 } from "../lib/registrationOperations";
 import {toast} from "sonner"
-import RegistrationForm from "./registration-form";
+// import RegistrationForm from "./registration-form";
 import EditDialogForm from "./edit-dialog-form";
 export default function RegistrationTable() {
   interface Registration {
@@ -35,8 +35,8 @@ export default function RegistrationTable() {
    name: string;
    email: string;
    dateOfBirth: string | number | Date;
-   phone: any;
-   address: any;
+   phone: string | null |undefined;
+   address: string | null|undefined;
  }
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [fetching, setFetching] = useState(false);
