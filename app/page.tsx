@@ -5,7 +5,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 export default function Home() {
   return (
     <main>
-      <Tabs defaultValue="account" className="w-full h-full p-6 flex flex-col items-center">
+      <Tabs
+        defaultValue="account"
+        className="w-full h-full p-6 flex flex-col items-center"
+      >
         <TabsList className=" p-6">
           <TabsTrigger value="account" className="font-bold text-xl">
             Registration Form
@@ -15,10 +18,10 @@ export default function Home() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="account">
-           <RegistrationForm  />
+        <RegistrationForm/>
         </TabsContent>
         <TabsContent value="password">
-          <RegistrationTable /> 
+          <RegistrationTable />
         </TabsContent>
       </Tabs>
     </main>

@@ -17,3 +17,4 @@ model Registration {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+ 

@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
+import {toast} from "sonner"
 import {
   Form,
   FormControl,
@@ -61,11 +62,16 @@ export default function RegistrationForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    try {
+    try {    
       await createRegistration(values);
       form.reset();
       // onRegistrationComplete();
     } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("An unknown error occurred.");
+      }
       console.error("Error creating registration:", error);
     } finally {
       setIsSubmitting(false);

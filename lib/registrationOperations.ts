@@ -1,3 +1,4 @@
+"use server"
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -9,12 +10,16 @@ interface Registration {
     address:any
 }
 
-//store all data in localstorage and in the database write function
-  
-
-
 export async function createRegistration(data: Registration) {
   try {
+    //checking unique email
+    const existingRegistration = await prisma.registration.findFirst({
+      where: { email: data.email },
+    });
+    if (existingRegistration) {
+      throw new Error("Email already exists");
+    } 
+
     const registration = await prisma.registration.create({
       data: {
         name: data.name,
