@@ -15,7 +15,7 @@ export default function Home() {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="account">
-           <RegistrationForm onRegistrationComplete={undefined}/>
+           <RegistrationForm  />
         </TabsContent>
         <TabsContent value="password">
           <RegistrationTable /> 

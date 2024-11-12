@@ -17,15 +17,14 @@ import {
 } from "../lib/registrationOperations";
 
 export default function RegistrationTable() {
- interface Registration {
-    id: string;
-    name: string;
-    email: string;
-    dateOfBirth: string | number | Date
-    phone: any
-    address:any
-}
-
+  interface Registration {
+   id: number ;
+   name: string;
+   email: string;
+   dateOfBirth: string | number | Date;
+   phone: any;
+   address: any;
+ }
   const [registrations, setRegistrations] = useState<Registration[]>([]);
 
   useEffect(() => {
@@ -88,13 +87,13 @@ export default function RegistrationTable() {
                 <Button
                   variant="outline"
                   className="mr-2"
-                  onClick={() => handleEdit(registration.id, registration)}
+                  onClick={() => handleEdit(registration.id.toString(), registration)}
                 >
                   Edit
                 </Button>
                 <Button
                   variant="destructive"
-                  onClick={() => handleDelete(registration.id)}
+                  onClick={() => handleDelete(registration.id.toString())}
                 >
                   Delete
                 </Button>

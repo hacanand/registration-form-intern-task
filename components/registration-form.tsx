@@ -19,14 +19,10 @@ import { createRegistration } from "../lib/registrationOperations";
 
 interface Registration {
   name: string;
-
   email: string;
-
   dateOfBirth: string | number | Date;
-
-  phone?: any;
-
-  address?: any;
+  phone: any;
+  address: any;
 }
 
 const formSchema = z.object({
@@ -45,8 +41,8 @@ const formSchema = z.object({
       message: "Please enter a valid date.",
     }
   ),
-  phone: z.string().optional(),
-  address: z.string().optional(),
+  phone: z.string(),
+  address: z.string(),
 });
 
 export default function RegistrationForm() {

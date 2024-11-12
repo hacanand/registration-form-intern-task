@@ -2,13 +2,17 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 interface Registration {
-  
     name: string;
     email: string;
     dateOfBirth: string | number | Date
     phone: any
     address:any
 }
+
+//store all data in localstorage and in the database write function
+  
+
+
 export async function createRegistration(data: Registration) {
   try {
     const registration = await prisma.registration.create({
