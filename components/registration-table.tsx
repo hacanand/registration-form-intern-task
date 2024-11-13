@@ -41,19 +41,14 @@ export default function RegistrationTable() {
   const [fetching, setFetching] = useState(false);
   // const[editing, setEditing] = useState();
   useEffect(() => {
-    //set to localStorage
     fetchRegistrations();
   }, []);
-
   const fetchRegistrations = async () => {
     setFetching(true);
-    
     try {
-
       const data = await getAllRegistrations();
       setRegistrations(data);
     } catch (error) {
-       
       toast.error("An error occurred while fetching all data");
       console.error("Error fetching registrations:", error);
     }
@@ -61,7 +56,7 @@ export default function RegistrationTable() {
       setFetching(false);
     }
   };
-  // console.log(fetching)
+  console.log(registrations)
   const handleDelete = async (id: string) => {
     try {
       await deleteRegistration(id);
