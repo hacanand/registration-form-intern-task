@@ -64,6 +64,7 @@ export default function RegistrationForm() {
     setIsSubmitting(true);
     try {    
       await createRegistration(values);
+      toast.success("Data created successfully");
       form.reset();
       // onRegistrationComplete();
     } catch (error) {

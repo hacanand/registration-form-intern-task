@@ -39,6 +39,7 @@ export default function RegistrationTable() {
  }
   const [registrations, setRegistrations] = useState<Registration[]>([]);
   const [fetching, setFetching] = useState<boolean>(false);
+  const [deleting, setDeleting] = useState<boolean>(false);
 
 
   useEffect(() => {
@@ -59,12 +60,18 @@ export default function RegistrationTable() {
   };
  
   const handleDelete = async (id: string) => {
+    setDeleting(true);
     try {
       await deleteRegistration(id);
+      toast.success("Data deleted successfully");
+
       fetchRegistrations();
     } catch (error) {
       toast.error("An error occurred while deleting a data")
       console.error("Error deleting registration:", error);
+    }
+    finally {
+      setDeleting(false);
     }
   };
   return (
@@ -83,48 +90,46 @@ export default function RegistrationTable() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {fetching ? "Loading..." : (
-            registrations.map((registration) => (
-              <TableRow key={registration.id}>
-                <TableCell>{registration.id}</TableCell>
-                <TableCell>{registration.name}</TableCell>
-                <TableCell>{registration.email}</TableCell>
-                <TableCell>
-                  {new Date(registration.dateOfBirth).toLocaleDateString()}
-                </TableCell>
-                <TableCell>{registration.phone || "N/A"}</TableCell>
-                <TableCell>{registration.address || "N/A"}</TableCell>
-                <TableCell>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className="mr-2"
-                      >
-                        Edit
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[625px]">
-                      <DialogHeader>
-                        <DialogTitle>Edit User</DialogTitle>
-                        <DialogDescription>
-                          Make changes to your profile here. Click update when
-                          you are done.
-                        </DialogDescription>
-                      </DialogHeader>
-                        <EditDialogForm data={registration}  />
-                    </DialogContent>
-                  </Dialog>
-                  <Button
-                    variant="destructive"
+          {fetching
+            ? "Loading..."
+            : registrations.map((registration) => (
+                <TableRow key={registration.id}>
+                  <TableCell>{registration.id}</TableCell>
+                  <TableCell>{registration.name}</TableCell>
+                  <TableCell>{registration.email}</TableCell>
+                  <TableCell>
+                    {new Date(registration.dateOfBirth).toLocaleDateString()}
+                  </TableCell>
+                  <TableCell>{registration.phone || "N/A"}</TableCell>
+                  <TableCell>{registration.address || "N/A"}</TableCell>
+                  <TableCell>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" className="mr-2">
+                          Edit
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[625px]">
+                        <DialogHeader>
+                          <DialogTitle>Edit User</DialogTitle>
+                          <DialogDescription>
+                            Make changes to your profile here. Click update when
+                            you are done.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <EditDialogForm data={registration} />
+                      </DialogContent>
+                    </Dialog>
+                    <Button
+                      variant="destructive"
                     onClick={() => handleDelete(registration.id.toString())}
-                  >
-                    Delete
-                  </Button>
-                </TableCell>
-              </TableRow>
-            ))
-          )}
+                    disabled={deleting}
+                    >
+                      {deleting ? "Deleting..." : "Delete"}
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
         </TableBody>
       </Table>
     </div>

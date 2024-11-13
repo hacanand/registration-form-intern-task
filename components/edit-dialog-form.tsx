@@ -72,7 +72,6 @@ export default function EditDialogForm({ data }: { data: Registration }) {
     } catch (error) {
        
         toast.error("An error occurred while editing");
-      
       console.error("Error creating registration:", error);
     } finally {
       setIsSubmitting(false);
