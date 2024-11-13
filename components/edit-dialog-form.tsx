@@ -69,11 +69,9 @@ export default function EditDialogForm({data}: {data: Registration}) {
       form.reset();
       // onRegistrationComplete();
     } catch (error) {
-      if (error instanceof Error) {
-        toast.error(error.message);
-      } else {
-        toast.error("An unknown error occurred.");
-      }
+       
+        toast.error("An error occurred while editing");
+      
       console.error("Error creating registration:", error);
     } finally {
       setIsSubmitting(false);
