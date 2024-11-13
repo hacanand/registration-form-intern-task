@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {updateRegistration } from "../lib/registrationOperations";
+import {getAllRegistrations, updateRegistration } from "../lib/registrationOperations";
 import { DialogFooter } from "./ui/dialog";
 
 interface Registration {
@@ -67,6 +67,7 @@ export default function EditDialogForm({data}: {data: Registration}) {
     try {
       await updateRegistration(data.id.toString(), values);
       form.reset();
+      getAllRegistrations()
       // onRegistrationComplete();
     } catch (error) {
        
