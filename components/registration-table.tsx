@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import {
   Table,
@@ -54,11 +53,8 @@ export default function RegistrationTable() {
       const data = await getAllRegistrations();
       setRegistrations(data);
     } catch (error) {
-      if (error instanceof Error) {
-        toast.error(error.message);
-      } else {
-        toast.error("An unknown error occurred");
-      }
+       
+      toast.error("An error occurred while fetching all data");
       console.error("Error fetching registrations:", error);
     }
     finally {
@@ -71,22 +67,10 @@ export default function RegistrationTable() {
       await deleteRegistration(id);
       fetchRegistrations();
     } catch (error) {
+      toast.error("An error occurred while deleting a data")
       console.error("Error deleting registration:", error);
     }
   };
-    // const handleEdit = async (id: string, data: Registration) => {
-    //   try {
-      
-    //       // await updateRegistration(id, data);
-    //     // fetchRegistrations();
-
-    //     // console.log("Edit registration with ID:", id);
-
-    //   } catch (error) {
-    //       console.error("Error getting User Details:", error);
-    //   }
-    // };
-    
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Registered Users</h1>
@@ -132,9 +116,9 @@ export default function RegistrationTable() {
                           you are done.
                         </DialogDescription>
                       </DialogHeader>
-                      <div>
+                    
                         <EditDialogForm data={registration} />
-                      </div>
+                    
                     </DialogContent>
                   </Dialog>
                   <Button
