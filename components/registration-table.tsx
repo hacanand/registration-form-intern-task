@@ -38,8 +38,9 @@ export default function RegistrationTable() {
    address: string | null|undefined;
  }
   const [registrations, setRegistrations] = useState<Registration[]>([]);
-  const [fetching, setFetching] = useState(false);
-  // const[editing, setEditing] = useState();
+  const [fetching, setFetching] = useState<boolean>(false);
+
+
   useEffect(() => {
     fetchRegistrations();
   }, []);
@@ -56,7 +57,7 @@ export default function RegistrationTable() {
       setFetching(false);
     }
   };
-  console.log(registrations)
+ 
   const handleDelete = async (id: string) => {
     try {
       await deleteRegistration(id);
@@ -111,9 +112,7 @@ export default function RegistrationTable() {
                           you are done.
                         </DialogDescription>
                       </DialogHeader>
-                    
-                        <EditDialogForm data={registration} />
-                    
+                        <EditDialogForm data={registration}  />
                     </DialogContent>
                   </Dialog>
                   <Button

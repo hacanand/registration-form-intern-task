@@ -47,7 +47,7 @@ const formSchema = z.object({
   address: z.string(),
 });
 
-export default function EditDialogForm({data}: {data: Registration}) {
+export default function EditDialogForm({ data }: { data: Registration }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -66,8 +66,8 @@ export default function EditDialogForm({data}: {data: Registration}) {
     setIsSubmitting(true);
     try {
       await updateRegistration(data.id.toString(), values);
-      form.reset();
-      getAllRegistrations()
+      form.reset()
+      toast.success("Data updated successfully");
       // onRegistrationComplete();
     } catch (error) {
        
