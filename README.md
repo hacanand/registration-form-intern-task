@@ -15,14 +15,16 @@
 - I have used avin cloud for database and set the environment variable in .env file
 - You can use your own database and set the environment variable in .env file
 - I have used mysql database
+
 set the environment variable in .env file
+- Example of .env file
     ```bash
      DATABASE_URL="mysql://avnadmin:Your_database_password@mysql-238042ae-<"username">-9c1b.j.aivencloud.com:11317/defaultdb?ssl-mode=REQUIRED"
     ```
 ## Getting Started
 
-Offline Installation of the project 
-You can change the theme in layout.tsx file 
+- Offline Installation of the project 
+- You can change the theme in layout.tsx file 
 - I have used ShadcnUI ui components for the project 
 
 - Due to Reactjs 19 use --legacy-peer-deps or --force option while npm install of any package
