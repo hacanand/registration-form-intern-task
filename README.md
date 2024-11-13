@@ -1,14 +1,31 @@
  
+# Intern Task INI8 Labs Private Limited
+## about the project
+- This is a simple registration form with validation
+- I have used TypeScript for the project
+- I have used Nextjs for the project
+- I have used ShadcnUI ui components for the project
+- I have used mysql database for the project
+- I have used avin cloud for database
+- I have used react-hook-form and zod for form validation
+- I have used server and client components for the project
+
+
 ## Environment Variables set
-DATABASE_URL="mysql://avnadmin:Your_database_password@mysql-238042ae-<name>-9c1b.j.aivencloud.com:11317/defaultdb?ssl-mode=REQUIRED"
-
-
+- I have used avin cloud for database and set the environment variable in .env file
+- You can use your own database and set the environment variable in .env file
+- I have used mysql database
+set the environment variable in .env file
+    ```bash
+     DATABASE_URL="mysql://avnadmin:Your_database_password@mysql-238042ae-<"username">-9c1b.j.aivencloud.com:11317/defaultdb?ssl-mode=REQUIRED"
+    ```
 ## Getting Started
 
-First, run the development server:
+Offline Installation of the project 
+You can change the theme in layout.tsx file 
+- I have used ShadcnUI ui components for the project 
 
-due to react 19 use --legacy-peer-deps or --force option
-    
+- Due to Reactjs 19 use --legacy-peer-deps or --force option while npm install of any package
     ```bash
     git clone https://github.com/hacanand/registration-form-intern-task.git
     
@@ -16,7 +33,8 @@ due to react 19 use --legacy-peer-deps or --force option
 
     npm run dev
     ```
-Server will start at http://localhost:3000
+- app will start at http://localhost:3000
+- Go to http://localhost:3000 to see the app
 
 ## Web hosted UI
 
