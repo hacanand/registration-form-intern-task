@@ -6,8 +6,8 @@ const prisma = new PrismaClient();
     name: string;
     email: string;
     dateOfBirth: string | number | Date;
-    phone: string | null | undefined;
-    address: string | null | undefined;
+    phone?: string | null | undefined;
+    address?: string | null | undefined;
   }
 
 export async function createRegistration(data: Registration) {

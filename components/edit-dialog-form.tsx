@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { createRegistration } from "../lib/registrationOperations";
+import {updateRegistration } from "../lib/registrationOperations";
 import { DialogFooter } from "./ui/dialog";
 
 interface Registration {
@@ -53,6 +53,7 @@ export default function EditDialogForm({data}: {data: Registration}) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+       
       name:data.name,
       email: data.email,
       dateOfBirth: new Date(data.dateOfBirth).toString(),
@@ -64,7 +65,7 @@ export default function EditDialogForm({data}: {data: Registration}) {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      await createRegistration(values);
+      await updateRegistration(data.id.toString(), values);
       form.reset();
       // onRegistrationComplete();
     } catch (error) {

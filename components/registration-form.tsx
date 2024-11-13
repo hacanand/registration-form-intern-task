@@ -18,14 +18,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { createRegistration } from "../lib/registrationOperations";
 
-  interface Registration {
-   id: number ;
-   name: string;
-   email: string;
-   dateOfBirth: string | number | Date;
-   phone?: string | null | undefined;
-   address?: string | null | undefined;
- }
+//   interface Registration {
+//    id: number ;
+//    name: string;
+//    email: string;
+//    dateOfBirth: string | number | Date;
+//    phone?: string | null | undefined;
+//    address?: string | null | undefined;
+//  }
 
 const formSchema = z.object({
   name: z.string().min(2, {
